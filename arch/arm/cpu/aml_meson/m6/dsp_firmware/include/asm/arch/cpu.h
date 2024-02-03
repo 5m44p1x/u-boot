@@ -14,9 +14,9 @@
 
 #ifdef __KERNEL__
 
-#warning todo implement CONFIG_BOARD_SIZE_LIMIT 
+#warning todo implement CONFIG_BOARD_SIZE_LIMIT
 
-//#define CONFIG_BOARD_SIZE_LIMIT 
+//#define CONFIG_BOARD_SIZE_LIMIT
 
 
 
@@ -152,7 +152,9 @@
 
 #define CONFIG_MMC              1
 
+#ifndef CONFIG_DOS_PARTITION
 #define CONFIG_DOS_PARTITION    1
+#endif
 
 #define CONFIG_AML_SDIO         1
 
@@ -192,9 +194,9 @@
 
 #else
 
-#define SPL_STATIC_FUNC     
+#define SPL_STATIC_FUNC
 
-#define SPL_STATIC_VAR      
+#define SPL_STATIC_VAR
 
 #endif
 

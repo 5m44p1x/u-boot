@@ -32,7 +32,9 @@
 #define CONFIG_BOARD_EARLY_INIT_R
 
 /* Partitions */
+#ifndef CONFIG_DOS_PARTITION
 #define CONFIG_DOS_PARTITION
+#endif
 
 /*
  * Command line configuration.

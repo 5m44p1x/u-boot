@@ -63,7 +63,7 @@ extern int __g_nTStep_4BC722B3__;
 /*
  * Board-specific Platform code can reimplement show_boot_progress () if needed
  */
-void inline __show_boot_progress (int val) {}
+void __show_boot_progress (int val) {}
 void show_boot_progress (int val) __attribute__((weak, alias("__show_boot_progress")));
 
 #if defined(CONFIG_UPDATE_TFTP)
@@ -1560,10 +1560,10 @@ int run_command (const char *cmd, int flag)
 
 		repeatable &= cmdtp->repeatable;
 
-		/* Did the user stop this? 
+		/* Did the user stop this?
 		if (had_ctrlc ())
 			return -1;	/* if stopped then not repeatable */
-		
+
 	}
 
 	//return rc ? rc : repeatable;

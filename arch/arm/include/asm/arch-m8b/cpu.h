@@ -104,7 +104,7 @@
 #endif
 
 #if !defined(CONFIG_M8B_DDR_BIT_MODE_SET)
-  #define CONFIG_M8B_DDR_BIT_MODE_SET (CONFIG_M8B_DDR_BIT_MODE_32BIT)  
+  #define CONFIG_M8B_DDR_BIT_MODE_SET (CONFIG_M8B_DDR_BIT_MODE_32BIT)
 #endif
 
 #define M8BABY_DDR_DTAR_BANK_GET(addr,bit_row,bit_col,bank_set,bit_set) \
@@ -127,22 +127,22 @@
 //
 //NOTE: IMPORTANT! DO NOT TRY TO MODIFY FOLLOWING CODE!
 //           It is used to get DDR0 training address from PUB_DTAR0.
-//          
+//
 //How to fetch the DDR training address for M8:
 //           1. enable PCTL clock before access
 //           2. load DMC DDR setting from P_DMC_DDR_CTRL
 //           3. load the DTAR0 value from DDR0 PUB register according to the channel setting from DMC_DDR_CTRL
 //           4. disable PCTL clock for power saving
 //
-//Demo code: 
-/*          
+//Demo code:
+/*
 	//enable clock
 	writel(readl(P_DDR0_CLK_CTRL)|(1), P_DDR0_CLK_CTRL);
 
 	printf("training address: %x\n", M8BABY_GET_DT_ADDR(readl(P_DDR0_PUB_DTAR0), readl(P_DMC_DDR_CTRL)));
 
 	//disable clock
-	writel(readl(P_DDR0_CLK_CTRL) & (~1), P_DDR0_CLK_CTRL);  
+	writel(readl(P_DDR0_CLK_CTRL) & (~1), P_DDR0_CLK_CTRL);
 */
 
 #define M8BABY_GET_DT_ADDR(dtar, dmc) \
@@ -201,7 +201,7 @@
 /** Internal storage setting **/
 //size Limitation
 //#include "romboot.h"
-//#warning todo implement CONFIG_BOARD_SIZE_LIMIT 
+//#warning todo implement CONFIG_BOARD_SIZE_LIMIT
 //#define CONFIG_BOARD_SIZE_LIMIT 600000
 #define IO_REGION_BASE                0xe0000000
 #define CONFIG_SYS_CACHE_LINE_SIZE 32
@@ -214,7 +214,7 @@
 
 #ifdef CONFIG_CMD_NAND
 	#define CONFIG_NAND_AML_M3 1
-	#define CONFIG_NAND_AML  1	
+	#define CONFIG_NAND_AML  1
 	#define CONFIG_NAND_AML_M8
 	//#define CONFIG_SYS_MAX_NAND_DEVICE	1		/* Max number of */
 	#define CONFIG_SYS_NAND_MAX_CHIPS	4
@@ -244,7 +244,9 @@
 #if CONFIG_SDIO_B1 || CONFIG_SDIO_A || CONFIG_SDIO_B || CONFIG_SDIO_C
 	#define CONFIG_CMD_MMC          1
 	#define CONFIG_MMC              1
+	#ifndef CONFIG_DOS_PARTITION
 	#define CONFIG_DOS_PARTITION    1
+	#endif
 	#define CONFIG_AML_SDIO         1
 	#define CONFIG_GENERIC_MMC      1
 #endif
@@ -281,8 +283,8 @@
 	#define SPL_STATIC_FUNC     static
 	#define SPL_STATIC_VAR      static
 #else
-	#define SPL_STATIC_FUNC     
-	#define SPL_STATIC_VAR      
+	#define SPL_STATIC_FUNC
+	#define SPL_STATIC_VAR
 #endif
 
 #define CONFIG_CMDLINE_TAG		1	/* enable passing of ATAGs */
@@ -292,7 +294,7 @@
 #define CONFIG_CMD_KGDB			1
 ////#define CONFIG_SERIAL_TAG       1*/
 
-//#define CONFIG_AML_RTC 
+//#define CONFIG_AML_RTC
 //#define CONFIG_RTC_DAY_TEST 1  // test RTC run 2 days
 
 #define CONFIG_LZMA  1
@@ -300,7 +302,7 @@
 #define CONFIG_DISABLE_INTERNAL_U_BOOT_CHECK
 /*default command select*/
 #define CONFIG_CMD_MEMORY	1 /* md mm nm mw cp cmp crc base loop mtest */
-//support "bdinfo" 
+//support "bdinfo"
 #define CONFIG_CMD_BDI 1
 //support "coninfo"
 #define CONFIG_CMD_CONSOLE 1

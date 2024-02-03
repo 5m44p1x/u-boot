@@ -54,7 +54,7 @@
 /** Internal storage setting **/
 //size Limitation
 //#include "romboot.h"
-//#warning todo implement CONFIG_BOARD_SIZE_LIMIT 
+//#warning todo implement CONFIG_BOARD_SIZE_LIMIT
 #define CONFIG_BOARD_SIZE_LIMIT 600000
 
 /*--------------------------------------------------------------------
@@ -71,7 +71,7 @@
 #ifndef CONFIG_NAND_SP_BLOCK_SIZE
 #define CONFIG_NAND_SP_BLOCK_SIZE 32
 #endif
-#define CONFIG_SYS_NAND_BASE_LIST   {NFC_BASE} 
+#define CONFIG_SYS_NAND_BASE_LIST   {NFC_BASE}
 //#define CONFIG_SYS_NAND_BASE 0 //make uboot happy
 #endif
 #define CONFIG_CMD_MEMORY           1
@@ -89,7 +89,9 @@
 #if CONFIG_SDIO_B1 || CONFIG_SDIO_A || CONFIG_SDIO_B || CONFIG_SDIO_C
 #define CONFIG_CMD_MMC          1
 #define CONFIG_MMC              1
+#ifndef CONFIG_DOS_PARTITION
 #define CONFIG_DOS_PARTITION    1
+#endif
 #define CONFIG_AML_SDIO         1
 #define CONFIG_GENERIC_MMC      1
 #endif
@@ -113,7 +115,7 @@
 
 #ifdef	CONFIG_UBI_SUPPORT
 #define MTDIDS_DEFAULT		"nand1=nandflash1\0"
-#define MTDPARTS_DEFAULT	"mtdparts=nandflash1:256m@168m(system)\0"						
+#define MTDPARTS_DEFAULT	"mtdparts=nandflash1:256m@168m(system)\0"
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	"loadaddr=0x82000000\0" \
@@ -142,7 +144,7 @@
 	"env_path=u-boot-env\0" \
 	"bootstart=0\0" \
 	"bootsize=60000\0"
-	
+
 #define CONFIG_BOOTCOMMAND  "nand read 84100000 ${logo_start} ${logo_size};nand read ${loadaddr} ${normal_start} ${normal_size};lcd bl off;bootm"
 //#define CONFIG_BOOTCOMMAND  "lcd bl off;mmcinfo;fatload mmc 0:1 82000000 uImage;bootm"
 #else
@@ -211,8 +213,8 @@
 #define SPL_STATIC_FUNC     static
 #define SPL_STATIC_VAR      static
 #else
-#define SPL_STATIC_FUNC     
-#define SPL_STATIC_VAR      
+#define SPL_STATIC_FUNC
+#define SPL_STATIC_VAR
 #endif
 
 #define CONFIG_LZMA  1

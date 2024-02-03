@@ -47,7 +47,7 @@
 /** Internal storage setting **/
 //size Limitation
 //#include "romboot.h"
-//#warning todo implement CONFIG_BOARD_SIZE_LIMIT 
+//#warning todo implement CONFIG_BOARD_SIZE_LIMIT
 //#define CONFIG_BOARD_SIZE_LIMIT 600000
 #define IO_REGION_BASE                0xe0000000
 #define CONFIG_SYS_CACHE_LINE_SIZE 32
@@ -89,7 +89,9 @@
 #if CONFIG_SDIO_B1 || CONFIG_SDIO_A || CONFIG_SDIO_B || CONFIG_SDIO_C
 	#define CONFIG_CMD_MMC          1
 	#define CONFIG_MMC              1
+	#ifndef CONFIG_DOS_PARTITION
 	#define CONFIG_DOS_PARTITION    1
+	#endif
 	#define CONFIG_AML_SDIO         1
 	#define CONFIG_GENERIC_MMC      1
 #endif
@@ -119,8 +121,8 @@
 	#define SPL_STATIC_FUNC     static
 	#define SPL_STATIC_VAR      static
 #else
-	#define SPL_STATIC_FUNC     
-	#define SPL_STATIC_VAR      
+	#define SPL_STATIC_FUNC
+	#define SPL_STATIC_VAR
 #endif
 
 #define CONFIG_CMDLINE_TAG		1	/* enable passing of ATAGs */
@@ -130,7 +132,7 @@
 #define CONFIG_CMD_KGDB			1
 ////#define CONFIG_SERIAL_TAG       1*/
 
-#define CONFIG_AML_RTC 
+#define CONFIG_AML_RTC
 //#define CONFIG_RTC_DAY_TEST 1  // test RTC run 2 days
 
 #define CONFIG_LZMA  1
@@ -138,7 +140,7 @@
 #define CONFIG_DISABLE_INTERNAL_U_BOOT_CHECK
 /*default command select*/
 #define CONFIG_CMD_MEMORY	1 /* md mm nm mw cp cmp crc base loop mtest */
-//support "bdinfo" 
+//support "bdinfo"
 #define CONFIG_CMD_BDI 1
 //support "coninfo"
 #define CONFIG_CMD_CONSOLE 1
